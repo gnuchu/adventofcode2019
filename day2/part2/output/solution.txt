@@ -1,0 +1,1 @@
+Noun is 48, Verb is 47. Result is: 4847
