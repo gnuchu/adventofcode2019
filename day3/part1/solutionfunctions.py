@@ -3,6 +3,7 @@ def process_direction_instructions(moves):
   #Data is an array of movements.
   position = [0,0]
   past_postions = []
+  past_postions_dict = {}
 
   for move in moves:
     direction = move[0]
@@ -18,9 +19,14 @@ def process_direction_instructions(moves):
       position[1] += steps
     
     past_postions.append(position[:])
+    if tuple(position) in past_postions_dict:
+      past_postions_dict[tuple(position)] += 1
+    else:
+      past_postions_dict[tuple(position)] = 1
   
-  new_array = past_postions.sort(key=lambda x: manhattan_distance(x))
-  print(new_array)
+  past_postions.sort(key=lambda x: manhattan_distance(x))
+  print(past_postions_dict)
+
   print(f"End postion: {position}")
 
 def manhattan_distance(pointx, pointy=[0,0]):
